@@ -13,6 +13,11 @@ public class Main {
         methods.add(new Merge<Integer>());
         methods.add(new Quick<Integer>());
         Comparison c = new Comparison(methods, "n, Heap Sort, Insertion Sort, Selection Sort, Merge Sort, Quick Sort");
-        c.start(100, 100);
+        try {
+            c.start(100, 100);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

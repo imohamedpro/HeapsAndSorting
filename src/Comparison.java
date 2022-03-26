@@ -11,32 +11,37 @@ public class Comparison{
         this.methods = methods;
         this.header = header;
     }
-    public void start(int step, int n){
+    public void start(int step, int n) throws Exception{
+        FileWriter fw = new FileWriter(new File("result.csv"));
+        fw.append(header + "\n");
         int size = step;
         for(int i = 0; i < n; i++){
             Integer[] source = Randomizer.generate(size);
-            int[] scores = new int[methods.size() + 1];
-            scores[0] = i;
+            double[] scores = new double[methods.size() + 1];
+            scores[0] = size;
             int j = 1;
             for(Sorting<Integer> method: methods){
                 Integer[] copy = Arrays.copyOf(source, source.length);
                 long time = System.nanoTime();
                 method.sort(copy);
-                scores[j] = (int)(Math.floor(((System.nanoTime() - time) / 1000))/ 1000);
+                scores[j++] = (Math.floor(((System.nanoTime() - time))) / 1000);
             }
-            appendToCsv(scores);
+            appendToCsv(scores, fw);
+            size += step;
         }
+
+        fw.close();
+
     }
 
-    private void appendToCsv(int[] scores){
+    private void appendToCsv(double[] scores, FileWriter fw){
         try {
-            FileWriter fw = new FileWriter(new File("result.csv"));
             String str = "";
-            for(Integer x: scores){
+            for(Double x: scores){
                 str += x + ", ";
             }
+            str += "\n";
             fw.append(str);
-            fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
