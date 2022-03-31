@@ -21,11 +21,16 @@ public class Comparison{
             scores[0] = size;
             int j = 1;
             for(Sorting<Integer> method: methods){
-                Integer[] copy = Arrays.copyOf(source, source.length);
-                long time = System.nanoTime();
-                method.sort(copy);
-                scores[j++] = (Math.floor(((System.nanoTime() - time))) / 1000);
+                //Integer[] copy = Arrays.copyOf(source, source.length);
+                double score = 0;
+                for(int k = 0; k < 50; k++){
+                    long time = System.nanoTime();
+                    method.sort(Arrays.copyOf(source, source.length));
+                    score += (Math.floor(((System.nanoTime() - time))) / 1000);
+                }
+                scores[j++] = score / 50;
             }
+            System.out.println("finished sorting " + size);
             appendToCsv(scores, fw);
             size += step;
         }
