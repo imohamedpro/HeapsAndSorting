@@ -3,11 +3,11 @@ public class Heap<T extends Comparable<T>> implements Sorting<T>{
     private int size;
 
     private int left(int i){
-        return 2*i;
+        return 2*i + 1;
     }
 
     private int right(int i){
-        return 2*i + 1;
+        return 2*i + 2;
     }
 
     private int getLargest(int i){
