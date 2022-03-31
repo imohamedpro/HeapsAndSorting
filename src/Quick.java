@@ -1,26 +1,24 @@
 public class Quick <T extends Comparable<T>> implements Sorting<T> {
 
-    void qSort(T[] arr, int begin, int end) {
-        if (begin < end) {
+    private void qSort(T arr[],int start,int end){
+            if(start>=end) return;
             T pivot = arr[end];
-            int i = (begin - 1);
-            for (int j = begin; j < end; j++) {
+            int i = (start - 1);
+            for (int j = start; j < end; j++) {
                 if (arr[j].compareTo(pivot) <= 0) {
                     i++;
-                    T swapTemp = arr[i];
+                    T temp = arr[i];
                     arr[i] = arr[j];
-                    arr[j] = swapTemp;
+                    arr[j] = temp;
                 }
             }
-            T swapTemp = arr[i + 1];
+            T temp = arr[i + 1];
             arr[i + 1] = arr[end];
-            arr[end] = swapTemp;
+            arr[end] = temp;
             int partitionIndex = i + 1;
-            qSort(arr, begin, partitionIndex - 1);
+            qSort(arr, start, partitionIndex - 1);
             qSort(arr, partitionIndex + 1, end);
-        }
     }
-
     @Override
     public T[] sort(T[] array) {
         qSort(array, 0, array.length-1);
