@@ -14,7 +14,7 @@ public class Main {
         methods.add(new Quick<Integer>());
         Comparison c = new Comparison(methods, "n, Heap Sort, Insertion Sort, Selection Sort, Merge Sort, Quick Sort");
         try {
-            c.start(100, 40);
+            c.start(100, 100);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

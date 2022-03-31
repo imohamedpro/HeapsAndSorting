@@ -20,7 +20,7 @@ public class Quick <T extends Comparable<T>> implements Sorting<T> {
             qSort(arr, partitionIndex + 1, end);
         }
     }
-    
+
     @Override
     public T[] sort(T[] array) {
         qSort(array, 0, array.length-1);
