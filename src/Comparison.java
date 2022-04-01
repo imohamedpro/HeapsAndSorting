@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Comparison{
-    List<Sorting<Integer>> methods;
+    List<Sorting> methods;
     String header;
-    Comparison(List<Sorting<Integer>> methods, String header){
+    Comparison(List<Sorting> methods, String header){
         this.methods = methods;
         this.header = header;
     }
@@ -20,7 +20,7 @@ public class Comparison{
             double[] scores = new double[methods.size() + 1];
             scores[0] = size;
             int j = 1;
-            for(Sorting<Integer> method: methods){
+            for(Sorting method: methods){
                 //Integer[] copy = Arrays.copyOf(source, source.length);
                 double score = 0;
                 for(int k = 0; k < 50; k++){

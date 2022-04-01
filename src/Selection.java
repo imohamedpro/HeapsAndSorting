@@ -1,6 +1,6 @@
-public class Selection<T extends Comparable<T>> implements Sorting<T>{
+public class Selection implements Sorting{
     @Override
-    public T[] sort(T[] array) {
+    public Integer[] sort(Integer[] array) {
         int n = array.length;
         for(int i = 0; i < n; i++){
             int min = i;
@@ -8,7 +8,7 @@ public class Selection<T extends Comparable<T>> implements Sorting<T>{
                 if(array[j].compareTo(array[min]) < 0)
                     min = j;
             }
-            T temp = array[i];
+            Integer temp = array[i];
             array[i] = array[min];
             array[min] = temp;
         }

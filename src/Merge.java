@@ -1,13 +1,13 @@
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class Merge<T extends Comparable<T>> implements Sorting<T>{
+public class Merge implements Sorting{
     @Override
-    public T[] sort(T[] array) {
+    public Integer[] sort(Integer[] array) {
         if (array.length > 1) {
             int d = (array.length / 2);
-            T[] left = Arrays.copyOfRange(array, 0, d);
-            T[] right = Arrays.copyOfRange(array, d, array.length);
+            Integer[] left = Arrays.copyOfRange(array, 0, d);
+            Integer[] right = Arrays.copyOfRange(array, d, array.length);
             left = sort(left);
             right = sort(right);
             return merge(left, right);
@@ -16,8 +16,8 @@ public class Merge<T extends Comparable<T>> implements Sorting<T>{
         }
     }
 
-    public T[] merge(T[] left, T[] right) {
-        T[] merged = (T[]) Array.newInstance(Integer.class, left.length + right.length);
+    public Integer[] merge(Integer[] left, Integer[] right) {
+        Integer[] merged = new Integer[left.length + right.length];
         for (int i = 0, m1 = 0, m2 = 0; i < merged.length; i++) {
             if (left.length > m1 && right.length > m2) {
                 if (left[m1].compareTo(right[m2]) <= 0)

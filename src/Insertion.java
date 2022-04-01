@@ -1,10 +1,10 @@
-public class Insertion<T extends Comparable<T>> implements Sorting<T> {
+public class Insertion implements Sorting {
 
     @Override
-    public T[] sort(T[] array) {
+    public Integer[] sort(Integer[] array) {
         for(int i = 1; i < array.length; i++){
             int j = i;
-            T temp = array[j];
+            Integer temp = array[j];
             while(j >= 1 && temp.compareTo(array[j-1]) < 0){
                 array[j] = array[j-1];
                 j--;
